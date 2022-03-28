@@ -1,12 +1,12 @@
-
 import pytest
 from starlette.testclient import TestClient
+
 from app import main
-from app.config import get_settings, Settings, DATABASE_TEST_URL
+from app.config import DATABASE_URL_TEST, Settings, get_settings
 
 
 def get_settings_override():
-    return Settings(testing=True, database_url=DATABASE_TEST_URL)
+    return Settings(environment="test", testing=True, database_url=DATABASE_URL_TEST)
 
 
 @pytest.fixture(scope="module")
